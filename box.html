@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BOX GIFT</title>
+	<link rel="stylesheet" type="text/css" href="">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+	<div id="btn_openbox" style="display:none;text-align: center;">
+		<img  src="./img/open.png" style="width:500px;height: 500px;">
+	</div>
+	
+	<div style="text-align: center;" id="intro">
+		<div style="margin-top: 200px; font-size:30px;color: blue;">
+			Please select number of Gifts what you want to buy.
+		</div>
+		<div style="margin-top: 30px;">
+			<select style="width:400px;height:40px;font-size: 20px;">
+				<option value="">select number of gifts</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+		</div>
+	</div>
+	<div id="gift1" style="display: none;text-align: center;">
+		<video width="600" height="500" controls autoplay>
+			<source src="./img/gift_video1.mp4" type="video/mp4" id="video">
+		</video>
+		
+	</div>
+	<div id="gift2" style="display: none;text-align: center;">
+		<video width="600" height="500" controls autoplay>
+			<source src="./img/gift_video2.mp4" type="video/mp4" id="video">
+		</video>
+		
+	</div>
+	<div id="gift3" style="display: none;text-align: center;">
+		<video width="600" height="500" controls autoplay>
+			<source src="./img/gift_video3.mp4" type="video/mp4" id="video">
+		</video>
+		
+	</div>
+	<div id="gift4" style="display: none;text-align: center;">
+		<video width="600" height="500" controls autoplay>
+			<source src="./img/gift_video4.mp4" type="video/mp4" id="video">
+		</video>
+			
+	</div>
+	<div id="gift5" style="display: none;text-align: center;">
+		<video width="600" height="500" controls autoplay>
+			<source src="./img/gift_video5.mp4" type="video/mp4" id="video">
+		</video>
+	</div>
+	<div id="gift6" style="display: none;text-align: center;">
+		<video width="600" height="500" controls autoplay>
+			<source src="./img/gift_video6.mp4" type="video/mp4" id="video">
+		</video>
+	</div>
+	<div id="gift7" style="display: none;text-align: center;">
+		<video width="600" height="500" controls autoplay>
+			<source src="./img/gift_video7.mp4" type="video/mp4" id="video">
+		</video>
+	</div>
+	<div id="gift8" style="display: none;text-align: center;">
+		<video width="600" height="500" controls autoplay>
+			<source src="./img/gift_video8.mp4" type="video/mp4" id="video">
+		</video>
+	</div>
+	<div id="gift9" style="display: none;text-align: center;">
+		<video width="600" height="500" controls autoplay>
+			<source src="./img/gift_video9.mp4" type="video/mp4" id="video">
+		</video>
+	</div>
+	<div id="gift10" style="display: none;text-align: center;">
+		<video width="600" height="500" controls autoplay>
+			<source src="./img/gift_video10.mp4" type="video/mp4" id="video">
+		</video>
+	</div>
+	<div id="btn_next" style="cursor: pointer;display: none;text-align: center;">
+		<img  src="./img/next.png" style="width:400px;height:200px;">
+	</div>	
+	<div id="finished" style="display: none; font-size: 100px; margin-top: 50px; margin-left: 200px;color: green;">
+		That's all what you want.
+	</div>
+
+
+	<script type="text/javascript">
+		var num_of_gift = 0;
+		
+		$("select").change(function(){
+			num_of_gift = $(this).val();
+			console.log(num_of_gift);
+			
+			if(num_of_gift > 0){
+				$(this).hide();
+				$("#intro").hide();
+				$("#btn_openbox").show();
+			}
+		});
+		$("#btn_openbox").click(function(){
+			$("#intro").hide();
+			$(this).hide();
+			
+			// $("#gift_box").hide();		
+			console.log("#gift"+num_of_gift);
+			$("#btn_next").show();		
+			$("#gift"+num_of_gift).show();	
+		});
+
+		$("#btn_next").click(function(){
+			num_of_gift--;
+			//alert(num_of_gift);
+			console.log(num_of_gift);
+			var nin = Number(num_of_gift + 1);
+			console.log(nin);
+			if(num_of_gift>0){
+				$("#btn_next").hide();
+				console.log("#gift"+num_of_gift+1)
+				$("#gift"+nin).hide();
+				$("#btn_openbox").show();
+			}else{
+				$("#gift"+nin).hide();
+				$("#btn_next").hide();
+				$("#finished").show();
+			}
+		})
+	</script>
+</body>
+</html>
